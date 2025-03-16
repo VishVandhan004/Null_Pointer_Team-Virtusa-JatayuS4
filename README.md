@@ -68,4 +68,3 @@ A **Machine Learning-based model** that dynamically suggests interest rates for 
 ### 🔗 Connect & Contribute
 We welcome contributions! Feel free to fork this repository, raise issues, or submit pull requests to enhance our model.
 
-📢 For any queries, reach out to the team!
