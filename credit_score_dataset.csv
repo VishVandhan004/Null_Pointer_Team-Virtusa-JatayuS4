@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 product_type,credit_score,years_with_bank,deposit_amount,repayment_history,market_trend,credit_score_adjustment,years_with_bank_adjustment,deposit_amount_adjustment,repayment_history_adjustment,market_trend_adjustment,final_interest_rate_adjustment_bps,adjusted_interest_rate
 Home Loan,674,3,932751,excellent,falling,0,0,0,50,0,50,0.085
 Fixed Deposit,738,15,335084,excellent,falling,0,50,25,0,-25,50,0.055
@@ -5001,6 +5002,8 @@ Home Loan,535,9,266452,poor,rising,-50,25,0,-50,0,0,0.08
 Fixed Deposit,547,13,297888,excellent,stable,0,50,25,0,0,75,0.0575
 Fixed Deposit,584,1,464097,poor,stable,0,0,25,0,0,25,0.052500000000000005
 =======
+=======
+>>>>>>> 161f6b4b167499145434efec34739a0357957916
 product_type,credit_score,years_with_bank,deposit_amount,repayment_history,market_trend,credit_score_adjustment,years_with_bank_adjustment,deposit_amount_adjustment,repayment_history_adjustment,market_trend_adjustment,final_interest_rate_adjustment_bps,adjusted_interest_rate
 Home Loan,674,3,932751,excellent,falling,0,0,0,50,0,50,0.085
 Fixed Deposit,738,15,335084,excellent,falling,0,50,25,0,-25,50,0.055
@@ -10002,4 +10005,7 @@ Fixed Deposit,653,11,183021,good,falling,0,50,25,0,-25,50,0.055
 Home Loan,535,9,266452,poor,rising,-50,25,0,-50,0,0,0.08
 Fixed Deposit,547,13,297888,excellent,stable,0,50,25,0,0,75,0.0575
 Fixed Deposit,584,1,464097,poor,stable,0,0,25,0,0,25,0.052500000000000005
+<<<<<<< HEAD
 >>>>>>> 161f6b4 (changes are made..)
+=======
+>>>>>>> 161f6b4b167499145434efec34739a0357957916
