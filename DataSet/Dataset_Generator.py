@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 
-# Generate random values for each feature
-np.random.seed(42)  
-num_rows = 5000*2
+np.random.seed(42)
+
+num_rows = 10000
 
 data = {
     "credit_score": np.random.randint(350, 901, num_rows),
@@ -15,7 +15,6 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Apply adjustments based on conditions with random fluctuations
 df["credit_score_adjustment"] = df["credit_score"].apply(lambda x: 
     np.random.randint(50, 101) if x > 750 else 
     np.random.randint(-100, -49) if x < 500 else 
@@ -46,7 +45,6 @@ df["market_trend_adjustment"] = df["market_trend"].apply(lambda x:
     np.random.randint(-25, 26)
 )
 
-# Calculate raw final interest rate adjustment
 df["final_interest_rate_adjustment_bps"] = (
     df["credit_score_adjustment"] +
     df["years_with_bank_adjustment"] +
@@ -55,25 +53,22 @@ df["final_interest_rate_adjustment_bps"] = (
     df["market_trend_adjustment"]
 )
 
-# Ensure adjustments stay within a reasonable range but introduce randomness instead of clipping
 df["final_interest_rate_adjustment_bps"] = df["final_interest_rate_adjustment_bps"].apply(
     lambda x: np.random.randint(-200, 301) if x < -200 or x > 300 else x
 )
 
-# Updated base interest rate
-base_interest_rate = 7.5 / 100  # 7.5%
+base_interest_rate = 7.5 / 100
 
-# Calculate adjusted interest rate
 df["adjusted_interest_rate"] = base_interest_rate + (df["final_interest_rate_adjustment_bps"] / 10000)
 
-# Avoid hard clipping and instead use a small random shift to move values slightly above 7.5%
-df["adjusted_interest_rate"] = df["adjusted_interest_rate"].apply(lambda x: x if x > 7.5 / 100 else 7.51 / 100 + np.random.uniform(0, 0.01))
+df["adjusted_interest_rate"] = df["adjusted_interest_rate"].apply(
+    lambda x: x if x > 7.5 / 100 else 7.51 / 100 + np.random.uniform(0, 0.01)
+)
 
-# Convert to percentage format
 df["adjusted_interest_rate"] = (df["adjusted_interest_rate"] * 100).round(2)
 
-# Save dataset to CSV
-df.to_csv("credit_score_dataset.csv", index=False)
+product_types = ["Home Loans"] * 5000 + ["Fixed Deposits"] * 5000
+np.random.shuffle(product_types)
+df["product_type"] = product_types
 
-# Display first few rows
-df.head()
+df.to_csv("credit_score_dataset_updated.csv", index=False)
