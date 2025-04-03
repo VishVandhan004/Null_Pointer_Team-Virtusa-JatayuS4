@@ -1,4 +1,4 @@
-# 🏆 Virtusa Jatayu Season 4 - Dynamic Pricing of Financial Products
+# Virtusa Jatayu Season 4 - Dynamic Pricing of Financial Products
 
 ## 📌 Problem Statement
 Banks currently use fixed slab-based interest rates for Fixed Deposits (FDs) and Home Loans, which lack flexibility and competitiveness. The challenge is to introduce AI-driven dynamic pricing that adjusts interest rates based on customer profiles, enhancing customer retention and optimizing risk-based pricing.
