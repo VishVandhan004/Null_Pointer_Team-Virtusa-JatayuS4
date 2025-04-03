@@ -70,4 +70,3 @@ The **correlation matrix heatmap** helps visualize relationships between differe
 - **Multicollinearity Check**: If two features are highly correlated, one may be redundant.  
 - **Business Insights**: For example, a bank can **adjust loan interest rates** based on trends in customer credit scores.  
 
-Would you like further insights on how to use this in a machine-learning model? 🚀
