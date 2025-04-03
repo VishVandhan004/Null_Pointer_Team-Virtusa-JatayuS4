@@ -64,7 +64,3 @@ A **Machine Learning-based model** that dynamically suggests interest rates for 
 - **T. Vishnu Vandhan** (245321748058)
 
 ---
-
-### 🔗 Connect & Contribute
-We welcome contributions! Feel free to fork this repository, raise issues, or submit pull requests to enhance our model.
-
