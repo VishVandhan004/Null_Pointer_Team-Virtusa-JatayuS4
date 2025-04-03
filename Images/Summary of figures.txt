@@ -36,11 +36,32 @@
   - The median interest rates are nearly the same across trends, but extreme values (tails) vary, especially for the rising trend.
 - This suggests that market trends might slightly influence interest rate adjustments, but the overall impact appears to be moderate.
 
+#### **5. Co-Relation Matrix...**
+The heatmap visualizes the correlation matrix for various financial factors, showing relationships between different numeric variables in the dataset. Here are the key takeaways:
+### **Key Observations:**
+1. **Strong Positive Correlations:**
+   - **Credit Score & Score Adjustment (0.90):** Higher credit scores are strongly associated with higher score adjustments.
+   - **Bank Adjustment & Years with Bank (0.85):** Longer relationships with the bank tend to lead to higher bank adjustments.
+   - **Adjusted Interest Rate & Adjustment BPS (0.94):** Interest rate adjustments are highly correlated with basis point adjustments.
+
+2. **Moderate Positive Correlations:**
+   - **Credit Score & Adjusted Interest Rate (0.41):** Better credit scores tend to lower interest rates, but the correlation isn't extremely strong.
+   - **Score Adjustment & Adjusted Interest Rate (0.45):** Higher score adjustments also seem to affect interest rates.
+
+3. **Weak or No Correlation:**
+   - **Deposit Amount & Other Variables:** The deposit amount does not show significant correlations with most factors.
+   - **Market Trend Adjustment & Other Factors:** Market trends have minimal influence on interest rates and adjustments.
+
+
 ### **Overall Summary**
 - The first plot shows that interest rates are mostly concentrated around 8.5%–9.5%.
 - The second plot suggests that repayment history affects interest rate variations.
 - The third plot indicates that credit scores alone do not strictly determine interest rates.
 - The fourth plot suggests that market trends have a subtle effect on interest rate distribution.
+- the fifth plot 
+- Credit score and various adjustments (score, bank, history) are crucial in determining interest rates.
+- Years with a bank significantly impact bank adjustments.
+- Some variables, like deposit amount and market trends, have weaker relationships with interest rates.
 
 
 
