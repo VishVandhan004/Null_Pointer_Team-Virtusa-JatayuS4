@@ -38,14 +38,6 @@
                 800: "#075985",
                 900: "#0c4a6e",
               },
-              purple: {
-                500: "#a855f7",
-                600: "#9333ea",
-              },
-              pink: {
-                500: "#ec4899",
-                600: "#db2777",
-              },
             },
           },
         },
@@ -68,39 +60,36 @@
       }
     </style>
   </head>
-  <body class="bg-gradient-to-br from-sky-50 to-teal-50">
+  <body class="bg-gradient-to-br from-sky-50 to-teal-50 min-h-screen">
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg animate__animated animate__fadeIn">
       <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
           <div class="flex space-x-7">
             <div>
-              <a href="#" class="flex items-center py-4 px-2">
-                <span class="font-semibold text-teal-600 text-lg"
-                  >NULL POINTER</span
+              <!-- "NULL POINTER" adjusted to be bigger, bolder, and aligned to the left -->
+              <a class="flex items-center py-4 px-2">
+                <span class="font-bold text-teal-600 text-3xl mr-auto"
+                  >Null Pointer</span
                 >
               </a>
             </div>
             <div class="hidden md:flex items-center space-x-1">
+              <!-- Updated link styles to be uniform -->
               <a
                 href="/add"
-                class="py-4 px-2 text-gray-500 font-semibold hover:text-sky-500 transition duration-300"
+                class="py-4 px-4 text-sky-500 border-b-4 border-transparent hover:border-sky-500 font-semibold transition-all duration-300"
                 >Add Customer</a
               >
               <a
                 href="/search"
-                class="py-4 px-2 text-sky-500 border-b-4 border-sky-500 font-semibold"
-                >Search</a
+                class="py-4 px-4 text-sky-500 border-b-4 border-transparent hover:border-sky-500 font-semibold transition-all duration-300"
+                >Search Customer</a
               >
               <a
                 href="/view"
-                class="py-4 px-2 text-gray-500 font-semibold hover:text-sky-500 transition duration-300"
+                class="py-4 px-4 text-sky-500 border-b-4 border-transparent hover:border-sky-500 font-semibold transition-all duration-300"
                 >View Customers</a
-              >
-              <a
-                href="#"
-                class="py-4 px-2 text-gray-500 font-semibold hover:text-sky-500 transition duration-300"
-                >Settings</a
               >
             </div>
           </div>
@@ -187,7 +176,6 @@
             <h2 class="text-xl font-semibold text-gray-800 mb-4">
               Search Results ({{ customers|length }})
             </h2>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {% for customer in customers %}
               <div
@@ -213,6 +201,8 @@
                       <p class="text-sm text-gray-500">Marital Status</p>
                       <p class="font-medium">{{ customer.marital_status }}</p>
                     </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
                     <div>
                       <p class="text-sm text-gray-500">Employment</p>
                       <p class="font-medium">{{ customer.employment }}</p>
@@ -222,58 +212,10 @@
                       <p class="font-medium">{{ customer.salary_account }}</p>
                     </div>
                   </div>
-                  <div
-                    class="flex justify-between items-center border-t border-gray-100 pt-4"
-                  >
-                    <div>
-                      <p class="text-sm text-gray-500">Customer Since</p>
-                      <p class="text-sm font-medium">
-                        {{ customer.created_at|datetimeformat if
-                        customer.created_at else 'N/A' }}
-                      </p>
-                    </div>
-                    <div class="flex space-x-2">
-                      <a
-                        href="/predict/{{ customer._id }}"
-                        class="bg-gradient-to-r from-sky-500 to-teal-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:from-sky-600 hover:to-teal-600 transition duration-300 whitespace-nowrap"
-                      >
-                        Home Loan
-                      </a>
-                      <a
-                        href="/predict-fd/{{ customer._id }}"
-                        class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:from-purple-600 hover:to-pink-600 transition duration-300 whitespace-nowrap"
-                      >
-                        FD Interest
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
               {% endfor %}
             </div>
-          </div>
-          {% elif request.method == 'POST' %}
-          <div class="bg-white rounded-xl shadow-md p-6 text-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-12 w-12 mx-auto text-gray-400 mb-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <h3 class="text-lg font-medium text-gray-800 mb-2">
-              No customers found
-            </h3>
-            <p class="text-gray-600">
-              We couldn't find any customers matching your search criteria.
-            </p>
           </div>
           {% endif %}
         </div>
@@ -281,7 +223,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white py-6 animate__animated animate__fadeInUp">
+    <footer class="bg-white py-6 mt-8 animate__animated animate__fadeInUp">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-gray-600 mb-4 md:mb-0">
@@ -291,48 +233,18 @@
             <a
               href="#"
               class="text-gray-500 hover:text-sky-500 transition duration-300"
-            >
-            </a>
+            ></a>
             <a
               href="#"
               class="text-gray-500 hover:text-sky-500 transition duration-300"
-            >
-            </a>
+            ></a>
             <a
               href="#"
               class="text-gray-500 hover:text-sky-500 transition duration-300"
-            >
-            </a>
+            ></a>
           </div>
         </div>
       </div>
     </footer>
-
-    <script>
-      // Mobile menu toggle
-      const btn = document.querySelector("button.mobile-menu-button");
-      const menu = document.querySelector(".mobile-menu");
-
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
-
-      // Form field animations
-      const inputs = document.querySelectorAll("input, select");
-      inputs.forEach((input) => {
-        input.addEventListener("focus", () => {
-          input.parentElement.classList.add(
-            "animate__animated",
-            "animate__pulse"
-          );
-        });
-        input.addEventListener("blur", () => {
-          input.parentElement.classList.remove(
-            "animate__animated",
-            "animate__pulse"
-          );
-        });
-      });
-    </script>
   </body>
 </html>

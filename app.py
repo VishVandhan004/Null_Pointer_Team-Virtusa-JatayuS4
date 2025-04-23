@@ -19,7 +19,21 @@ customers = db['customers']
 
 @app.route('/')
 def home():
-    return redirect(url_for('add_customer'))
+    return render_template('home.html')
+
+# ✅ NEW HOME REDIRECT ROUTE
+@app.route('/home')
+def home_redirect():
+    customer = customers.find_one(sort=[('_id', -1)])
+    if customer:
+        return redirect(url_for('predict', customer_id=str(customer['_id'])))
+    else:
+        return redirect(url_for('add_customer'))
+
+
+@app.route('/employee_login.html')
+def employee_login():
+    return render_template('employee_login.html')
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_customer():
