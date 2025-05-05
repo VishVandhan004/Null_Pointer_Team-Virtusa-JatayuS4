@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Null Pointer</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.6;
+      }
+
+      header {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 40px;
+        background: rgba(15, 32, 39, 0.8);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 25px;
+        color: #2bb3ac;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+        margin-bottom: 40px;
+        text-align: justify;
+        text-align-last: center;
+        padding: 0 20px;
+      }
+
+      .get-started-btn {
+        padding: 16px 40px;
+        font-size: 1.1rem;
+        background-color: #2bb3ac;
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(43, 179, 172, 0.3);
+      }
+
+      .get-started-btn:hover {
+        background-color: #249890;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(43, 179, 172, 0.4);
+      }
+
+      .team-name {
+        position: relative;
+        display: inline-block;
+      }
+
+      .team-name::after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 3px;
+        background: #2bb3ac;
+        bottom: -10px;
+        left: 20%;
+        border-radius: 3px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 30px 20px;
+          margin: 20px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        p {
+          font-size: 1rem;
+          padding: 0 10px;
+        }
+
+        .get-started-btn {
+          padding: 14px 30px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="get-started-btn" href="/employee_login.html"
+        >👩‍💼 Employee Login</a
+      >
+    </header>
+
+    <div class="container">
+      <h1><span class="team-name">Null Pointer Team</span></h1>
+      <p>
+        The objective of this project is to design and implement an intelligent
+        interest rate recommendation system for Fixed Deposits (FDs) and Home
+        Loans. Leveraging advanced machine learning models developed in Python,
+        the system analyzes critical customer metrics—including age, income,
+        credit score, tenure, loan amount, and deposit behavior—to dynamically
+        recommend optimal interest rates. By applying specialized regression and
+        classification algorithms tailored to each financial product, the
+        solution delivers personalized, data-driven pricing strategies that
+        enhance customer satisfaction while maximizing institutional
+        profitability.
+      </p>
+      <a class="get-started-btn" href="/home">Get Started</a>
+    </div>
+  </body>
+</html>

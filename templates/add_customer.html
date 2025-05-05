@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Customer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              teal: {
+                50: "#f0fdfa",
+                100: "#ccfbf1",
+                200: "#99f6e4",
+                300: "#5eead4",
+                400: "#2dd4bf",
+                500: "#14b8a6",
+                600: "#0d9488",
+                700: "#0f766e",
+                800: "#115e59",
+                900: "#134e4a",
+              },
+              sky: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gradient-to-br from-sky-50 to-teal-50 min-h-screen">
+    <nav class="bg-white shadow-lg animate__animated animate__fadeIn">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-7">
+            <div>
+              <a class="flex items-center py-4 px-2">
+                <span class="font-bold text-teal-600 text-3xl mr-auto"
+                  >Null Pointer</span
+                >
+              </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
+              <a
+                href="/add"
+                class="py-4 px-4 text-sky-500 border-b-4 border-transparent hover:border-sky-500 font-semibold transition-all duration-300"
+                >Add Customer</a
+              >
+              <a
+                href="/search"
+                class="py-4 px-4 text-sky-500 border-b-4 border-transparent hover:border-sky-500 font-semibold transition-all duration-300"
+                >Search Customer</a
+              >
+              <a
+                href="/view"
+                class="py-4 px-4 text-sky-500 border-b-4 border-transparent hover:border-sky-500 font-semibold transition-all duration-300"
+                >View Customers</a
+              >
+            </div>
+          </div>
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+              <svg
+                class="w-6 h-6 text-gray-500 hover:text-sky-500"
+                x-show="!showMenu"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container mx-auto px-4 py-8 animate__animated animate__fadeInUp"
+    >
+      <div class="max-w-2xl mx-auto">
+        <div
+          class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-500 hover:shadow-xl"
+        >
+          <div class="bg-gradient-to-r from-sky-500 to-teal-500 p-6">
+            <h2 class="text-2xl font-bold text-white">Add New Customer</h2>
+            <p class="text-teal-100">
+              Fill in the details below to register a new customer
+            </p>
+          </div>
+
+          <form method="POST" class="p-6 space-y-6">
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Full Name</label
+              >
+              <input
+                name="name"
+                placeholder="John Doe"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Gender</label
+              >
+              <select
+                name="gender"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Marital Status</label
+              >
+              <select
+                name="marital_status"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>
+                  Select Marital Status
+                </option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Employment Type</label
+              >
+              <select
+                name="employment"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>
+                  Select Employment Type
+                </option>
+                <!-- <option value="Part-time">Part-time</option> -->
+                <option value="Salaried">Salaried</option>
+                <option value="Retired">Retired</option>
+                <!-- <option value="Contractual">Contractual</option> -->
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Existing Customer</label
+              >
+              <select
+                name="existing_customer"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>
+                  Is this an existing customer?
+                </option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Salary Account</label
+              >
+              <select
+                name="salary_account"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>
+                  Is this a salary account?
+                </option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Repayment Type</label
+              >
+              <select
+                name="repayment_type"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>
+                  Select Repayment Type
+                </option>
+                <option value="Step-up EMI">Step-up EMI</option>
+                <option value="Standard EMI">Standard EMI</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Base Rate Type</label
+              >
+              <select
+                name="base_rate_type"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>
+                  Select Base Rate Type
+                </option>
+                <option value="Fixed">Fixed</option>
+                <option value="Floating">Floating</option>
+              </select>
+            </div>
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700">
+                Base Rate
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                name="base_rate"
+                value="{{ request.form.get('base_rate', '') }}"
+                placeholder="e.g. 6.5"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-300 focus:border-purple-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Dependents</label
+              >
+              <input
+                name="dependents"
+                type="number"
+                placeholder="e.g. 2"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Active Loans</label
+              >
+              <input
+                name="active_loans"
+                type="number"
+                placeholder="e.g. 1"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Missed Payments</label
+              >
+              <input
+                name="missed_payments"
+                type="number"
+                placeholder="e.g. 0"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Loan-to-Value (LTV)%</label
+              >
+              <input
+                name="ltv"
+                type="number"
+                step="0.01"
+                placeholder="e.g. 80"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Debt-to-Income (DTI)%</label
+              >
+              <input
+                name="dti"
+                type="number"
+                step="0.01"
+                placeholder="e.g. 35"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+                required
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Co-Applicant Present</label
+              >
+              <select
+                name="co_applicant_present"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300 appearance-none bg-white"
+              >
+                <option value="" disabled selected>Select Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700"
+                >Co-Applicant Income</label
+              >
+              <input
+                name="co_applicant_income"
+                type="number"
+                step="0.01"
+                placeholder="e.g. 450000"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-300 focus:border-sky-500 transition duration-300"
+              />
+            </div>
+
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-sky-500 to-teal-500 text-white py-3 px-4 rounded-lg font-semibold hover:from-sky-600 hover:to-teal-600 transition duration-300 transform hover:scale-105 shadow-md"
+              >
+                Add Customer
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 inline ml-1"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-white py-6 mt-8 animate__animated animate__fadeInUp">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-600 mb-4 md:mb-0">
+            © 2025 Null Pointer. All rights reserved.
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="#"
+              class="text-gray-500 hover:text-sky-500 transition duration-300"
+            ></a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-sky-500 transition duration-300"
+            ></a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-sky-500 transition duration-300"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        if (btn && menu) {
+          btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
+        }
+
+        const attachAnimationListeners = (element) => {
+          element.addEventListener("focus", () => {
+            element.parentElement.classList.add(
+              "animate__animated",
+              "animate__pulse"
+            );
+          });
+          element.addEventListener("blur", () => {
+            element.parentElement.classList.remove(
+              "animate__animated",
+              "animate__pulse"
+            );
+          });
+        };
+        document
+          .querySelectorAll("input, select")
+          .forEach(attachAnimationListeners);
+      });
+    </script>
+  </body>
+</html>

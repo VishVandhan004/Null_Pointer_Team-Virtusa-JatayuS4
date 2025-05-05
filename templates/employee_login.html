@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Employee Login - Null Pointer Team</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn-icons-png.flaticon.com/512/10691/10691906.png"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.5s ease;
+      }
+
+      .login-card {
+        padding: 40px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .login-card h1 {
+        margin-bottom: 30px;
+        font-size: 24px;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-group label {
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: inherit;
+      }
+
+      .input-group input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: white;
+        color: inherit;
+      }
+
+      .input-group input:focus {
+        outline: none;
+      }
+
+      .forgot-password {
+        text-align: right;
+        margin-top: 10px;
+      }
+
+      .forgot-password a {
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .extra-options {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .disclaimer {
+        text-align: center;
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 30px;
+      }
+
+      .theme-bank {
+        background: linear-gradient(135deg, #0a192f, #1c2541);
+        color: #fff;
+      }
+
+      .theme-bank .login-card {
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid #3a506b;
+      }
+
+      .theme-bank .input-group input {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border: 1px solid #5bc0be;
+      }
+
+      .theme-bank .input-group input:focus {
+        border-color: #3aafa9;
+      }
+
+      .theme-bank .forgot-password a {
+        color: #d3d3d3;
+      }
+
+      .theme-bank .forgot-password a:hover {
+        color: #3aafa9;
+      }
+
+      .null-pointer-link {
+        display: inline-block;
+        font-size: 30px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+        margin-bottom: 20px;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+
+      .null-pointer-link:hover {
+        color: #3aafa9;
+        text-decoration: underline;
+      }
+
+      .get-started-link {
+        display: inline-block;
+        padding: 12px;
+        background-color: #3aafa9;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+        border: none;
+      }
+
+      .get-started-link:hover {
+        background-color: #2b7a78;
+      }
+
+      .error-message {
+        color: #ff6b6b;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .input-error {
+        border-color: #ff6b6b !important;
+      }
+
+      .global-error {
+        color: #ff6b6b;
+        text-align: center;
+        margin-bottom: 15px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="theme-bank">
+    <a class="null-pointer-link" href="/">Null Pointer</a>
+
+    <div class="login-card">
+      <h1>🏦 Bank Employee Login</h1>
+      <div id="globalError" class="global-error">Employee does not exist</div>
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="employeeId">Employee ID</label>
+          <input
+            type="text"
+            id="employeeId"
+            placeholder="Enter your ID"
+            required
+          />
+          <div id="employeeIdError" class="error-message"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+          <div id="emailError" class="error-message"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+          <div id="passwordError" class="error-message"></div>
+        </div>
+
+        <div class="extra-options">
+          <label><input type="checkbox" /> Remember Me</label>
+        </div>
+
+        <button type="submit" class="get-started-link">Sign In</button>
+      </form>
+
+      <div class="disclaimer">
+        Authorized personnel only. Access is monitored.<br />
+        Need help?
+        <a href="mailto:support@yourbank.com" style="color: #5bc0be"
+          >Contact IT Support</a
+        >
+      </div>
+    </div>
+
+    <script>
+      const employeeDatabase = {
+        EMP1001: {
+          email: "john.doe@bank.com",
+          password: "Secure@123",
+        },
+        EMP1002: {
+          email: "jane.smith@bank.com",
+          password: "Banking@456",
+        },
+        EMP1003: {
+          email: "robert.johnson@bank.com",
+          password: "Finance$789",
+        },
+        EMP1004: {
+          email: "emily.williams@bank.com",
+          password: "Teller@2023",
+        },
+        EMP1005: {
+          email: "michael.brown@bank.com",
+          password: "Manager#101",
+        },
+        EMP1006: {
+          email: "sarah.davis@bank.com",
+          password: "Audit0r!202",
+        },
+        EMP1007: {
+          email: "david.miller@bank.com",
+          password: "IT$upport303",
+        },
+        EMP1008: {
+          email: "lisa.wilson@bank.com",
+          password: "HR_Depart404",
+        },
+        EMP1009: {
+          email: "james.moore@bank.com",
+          password: "Risk@505",
+        },
+        EMP1010: {
+          email: "jennifer.taylor@bank.com",
+          password: "Compliance606",
+        },
+      };
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const employeeId = document.getElementById("employeeId").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value;
+
+          resetErrors();
+          document.getElementById("globalError").style.display = "none";
+
+          let isValid = true;
+
+          if (!employeeId) {
+            showError("employeeIdError", "Employee ID is required");
+            document.getElementById("employeeId").classList.add("input-error");
+            isValid = false;
+          }
+
+          if (!email) {
+            showError("emailError", "Email is required");
+            document.getElementById("email").classList.add("input-error");
+            isValid = false;
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showError("emailError", "Invalid email format");
+            document.getElementById("email").classList.add("input-error");
+            isValid = false;
+          }
+
+          if (!password) {
+            showError("passwordError", "Password is required");
+            document.getElementById("password").classList.add("input-error");
+            isValid = false;
+          }
+
+          if (!isValid) return;
+
+          const employee = employeeDatabase[employeeId];
+
+          if (!employee) {
+            document.getElementById("globalError").style.display = "block";
+            document.getElementById("employeeId").classList.add("input-error");
+            return;
+          }
+
+          if (employee.email !== email || employee.password !== password) {
+            document.getElementById("globalError").style.display = "block";
+            document.getElementById("email").classList.add("input-error");
+            document.getElementById("password").classList.add("input-error");
+            return;
+          }
+
+          window.location.href = "/add";
+        });
+
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
+        errorElement.style.display = "block";
+      }
+
+      function resetErrors() {
+        const errorElements = document.querySelectorAll(".error-message");
+        errorElements.forEach((element) => {
+          element.style.display = "none";
+        });
+
+        const inputElements = document.querySelectorAll("input");
+        inputElements.forEach((input) => {
+          input.classList.remove("input-error");
+        });
+      }
+    </script>
+  </body>
+</html>
