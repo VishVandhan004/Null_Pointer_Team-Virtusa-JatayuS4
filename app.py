@@ -9,10 +9,10 @@ from llm import get_loan_explanation, get_fd_explanation
 
 app = Flask(__name__)
 
-with open(r"C:\Users\guna5\OneDrive\Desktop\HOME-LOAN\Models\home_loan_model.pkl", 'rb') as f:
+with open(r"C:\Users\guna5\OneDrive\Desktop\Null Pointer   (Virtusa Hackathon)\Models\home_loan_model.pkl", 'rb') as f:
     model_objects = pickle.load(f)
 
-model_pipeline = joblib.load(r"C:\Users\guna5\OneDrive\Desktop\HOME-LOAN\Models\fd_model.pkl")
+model_pipeline = joblib.load(r"C:\Users\guna5\OneDrive\Desktop\Null Pointer   (Virtusa Hackathon)\Models\fd_model.pkl")
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client['loan_db']
